@@ -73,7 +73,11 @@ jobs:
           }
           EOF
           
-      - run: cd preview-site && npx vitepress build
+      - name: Build VitePress
+        run: |
+          cd preview-site && npx vitepress build
+          echo "Build completed. Contents:"
+          find .vitepress/dist -type f | head -10
       
       - uses: peaceiris/actions-gh-pages@v3
         with:
